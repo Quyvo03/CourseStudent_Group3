@@ -1,0 +1,166 @@
+﻿
+@{
+    Layout = "/Views/Share/LayoutUser.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>ADMIN</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <style>
+        .checkbox {
+            color: orangered;
+        }
+        /* Định dạng nút Login */
+        .btn-login {
+            float: right; /* Đưa nút sang trái */
+            margin-right: -75px; /* Khoảng cách với các phần tử khác */
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="img" style="background-image: url(/assets/img/fptschool.png);">
+                        </div>
+                        <div class="login-wrap p-4 p-md-5">
+                            <div class="d-flex">
+                                <div class="w-100">
+                                    <h3 class="mb-4">Sign In</h3>
+                                </div>
+                                <div class="w-100">
+                                    <p class="social-media d-flex justify-content-end">
+                                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            @{
+                                ViewBag.Title = "Login";
+                            }
+
+                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                            {
+                                @Html.ValidationSummary(true)
+
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btn-login">Login</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="rememberMe" id="rememberMe" />
+                                    <label for="rememberMe">Remember Me</label>
+                                </div><hr />
+
+                            }
+
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                                </div>
+                            }
+
+
+
+                            <p class="text-center">Not a member? <a data-toggle="tab" style="color:orangered" href="#signup">Sign Up</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script nonce="286c0878-6e94-4de4-9483-bd3ae9950fc4">
+        try {
+            (function (w, d) {
+                ! function (j, k, l, m) {
+                    j[l] = j[l] || {};
+                    j[l].executed = [];
+                    j.zaraz = {
+                        deferred: [],
+                        listeners: []
+                    };
+                    j.zaraz.q = [];
+                    j.zaraz._f = function (n) {
+                        return async function () {
+                            var o = Array.prototype.slice.call(arguments);
+                            j.zaraz.q.push({
+                                m: n,
+                                a: o
+                            })
+                        }
+                    };
+                    for (const p of ["track", "set", "debug"]) j.zaraz[p] = j.zaraz._f(p);
+                    j.zaraz.init = () => {
+                        var q = k.getElementsByTagName(m)[0],
+                            r = k.createElement(m),
+                            s = k.getElementsByTagName("title")[0];
+                        s && (j[l].t = k.getElementsByTagName("title")[0].text);
+                        j[l].x = Math.random();
+                        j[l].w = j.screen.width;
+                        j[l].h = j.screen.height;
+                        j[l].j = j.innerHeight;
+                        j[l].e = j.innerWidth;
+                        j[l].l = j.location.href;
+                        j[l].r = k.referrer;
+                        j[l].k = j.screen.colorDepth;
+                        j[l].n = k.characterSet;
+                        j[l].o = (new Date).getTimezoneOffset();
+                        if (j.dataLayer)
+                            for (const w of Object.entries(Object.entries(dataLayer).reduce(((x, y) => ({
+                                ...x[1],
+                                ...y[1]
+                            })), {}))) zaraz.set(w[0], w[1], {
+                                scope: "page"
+                            });
+                        j[l].q = [];
+                        for (; j.zaraz.q.length;) {
+                            const z = j.zaraz.q.shift();
+                            j[l].q.push(z)
+                        }
+                        r.defer = !0;
+                        for (const A of [localStorage, sessionStorage]) Object.keys(A || {}).filter((C => C.startsWith("_zaraz_"))).forEach((B => {
+                            try {
+                                j[l]["z_" + B.slice(7)] = JSON.parse(A.getItem(B))
+                            } catch {
+                                j[l]["z_" + B.slice(7)] = A.getItem(B)
+                            }
+                        }));
+                        r.referrerPolicy = "origin";
+                        r.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(j[l])));
+                        q.parentNode.insertBefore(r, q)
+                    };
+                    ["complete", "interactive"].includes(k.readyState) ? zaraz.init() : j.addEventListener("DOMContentLoaded", zaraz.init)
+                }(w, d, "zarazData", "script");
+            })(window, document)
+        } catch (e) {
+            throw fetch("/cdn-cgi/zaraz/t"), e;
+        };
+    </script>
+
+</body>
+
+</html>

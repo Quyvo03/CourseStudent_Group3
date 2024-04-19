@@ -1,0 +1,46 @@
+﻿@model WebApplication1.Models.Classes
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/homepage.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="~/assets/css/all.min.css">
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Classes</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ClassName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ClassName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Subjects.SubjectName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Subjects.SubjectName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ClassID }, new { @class = "btn btn-warning" }) |
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+
+    </p>
+</body>
+</html>
